@@ -1,0 +1,36 @@
+.keyboard {
+  &__row {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-bottom: 9px;
+
+    .letter {
+      background-color: #818384;
+      width: 64px;
+      height: 87px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      font-size: 21px;
+
+      &.absent,
+      &.present,
+      &.correct {
+        transition: all 0.5s ease-in;
+        transition-delay: 0.5s;
+      }
+
+      &.absent {
+        background-color: var(--grey-border);
+      }
+      &.present {
+        background-color: var(--yellow);
+      }
+      &.correct {
+        background-color: var(--green);
+      }
+    }
+  }
+}

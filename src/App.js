@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import react, { useEffect, useState, useContext } from "react";
+import "./dist/style.css";
+import { words } from "popular-english-words";
+
+import Wordle from "./components/Wordle";
+import { AppContext } from "./contexts/AppContext";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const { solution, setSolution } = useContext(AppContext);
+  const { popularWords, setPopularWords } = useContext(AppContext);
+
+  // All words with length 5
+  const dictionary = words.getMostPopularLength(100000, 5);
+  const count = 1000;
+  const randomNumber = Math.floor(Math.random() * count);
+
+  console.log(solution + " : " + randomNumber);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // The 1000(count) most popular words with length 5
+      const popularWordsFetched = await words.getMostPopularLength(count, 5);
+      setPopularWords(popularWordsFetched);
+      setSolution(popularWordsFetched[randomNumber]);
+    };
+
+    fetchData().catch((err) => console.log(err));
+  }, []);
+
+  return <div className="App">{solution && dictionary && <Wordle solution={solution} dictionary={dictionary} />}</div>;
 }
 
 export default App;

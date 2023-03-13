@@ -1,0 +1,8 @@
+.grid {
+  margin-bottom: 18px;
+
+  &:focus {
+    outline: none;
+    box-shadow: -1px 0px 0px 0px var(--white-text), 1px 0px 0px 0px var(--white-text);
+  }
+}

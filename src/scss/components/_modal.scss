@@ -1,0 +1,97 @@
+.modal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.568);
+  z-index: -1;
+
+  //   pointer-events: none;
+  opacity: 0;
+
+  transition: transform 0.4s cubic-bezier(0.465, 0.183, 0.153, 0.946), opacity 0.4s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  transition-delay: 1.5s;
+
+  &__content {
+    width: 600px;
+    height: 350px;
+    background-color: rgb(19, 19, 19);
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 35px;
+    padding: 20px 10px;
+    color: #73798d;
+    pointer-events: none;
+    transform: scale(1.2);
+    opacity: 0;
+    z-index: -1;
+
+    transition: all 0s;
+
+    &.visible {
+      transform: scale(1);
+      opacity: 1;
+      pointer-events: auto;
+      transition: transform 0.4s cubic-bezier(0.465, 0.183, 0.153, 0.946), opacity 0.4s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+      transition-delay: 1.5s;
+    }
+
+    > div {
+      .icon-trophy {
+        font-size: 80px;
+        color: rgb(255, 215, 0);
+        margin-bottom: 10px;
+      }
+
+      .icon-x {
+        position: absolute;
+        font-size: 30px;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+      }
+
+      .victory {
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 5%;
+          bottom: 0;
+          width: 90%;
+          height: 1px;
+          background-color: var(--white-text);
+        }
+      }
+
+      .message {
+        font-size: 25px;
+        text-transform: none;
+      }
+
+      .solution {
+        margin-top: 30px;
+        text-transform: none;
+        font-size: 25px;
+        & > div {
+          text-transform: uppercase;
+          font-size: 45px;
+          color: #810000;
+        }
+      }
+    }
+  }
+
+  &.visible {
+    opacity: 1;
+    z-index: 1;
+  }
+}
