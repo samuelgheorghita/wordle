@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   pointer-events: none;
@@ -20,9 +21,7 @@
     flex-direction: column;
     justify-content: center;
     transform: translateY(-200px);
-    // transition: all 0.3 ease-in-out;
     opacity: 0;
-    z-index: -1;
 
     .details {
       display: flex;
@@ -74,16 +73,23 @@
       border: none;
 
       svg {
-        // background-color: transparent;
         color: #73798d;
       }
     }
   }
+}
 
-  &.visible {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 1;
+.t-stats {
+  &-enter-active {
+    display: flex;
+  }
+
+  &-enter-done {
+    &.stats-modal {
+      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+    }
 
     & .stats-modal__content {
       opacity: 1;
@@ -92,10 +98,3 @@
     }
   }
 }
-
-// .stats {
-//   &.visible {
-//     opacity: 1;
-//     transition: opacity 1s ease-in-out;
-//   }
-// }

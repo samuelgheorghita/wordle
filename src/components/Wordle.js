@@ -1,32 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import useWordle from "../hooks/useWordle";
-import ErrorMessage from "./ErrorMessage";
 import Grid from "./Grid";
 import Header from "./Header";
 import Keyboard from "./Keyboard";
 import Modal from "./Modal";
-import Stats from "./Stats";
 
 const Wordle = ({ solution, dictionary }) => {
   const { currentGuess, guesses, handleKeyUp, isCorrect, resetGame, turn, usedKeys, setIsCorrect, setTurn } = useWordle(solution, dictionary);
   const isGameEnded = isCorrect || turn === 6;
 
-  console.log(solution);
-
-  // const notify = () => toast("yoo!");
-
   useEffect(() => {
     window.addEventListener("keyup", handleKeyUp);
 
     if (isCorrect) {
-      console.log("isCorrect: " + isCorrect);
       window.removeEventListener("keyup", handleKeyUp);
     }
     if (turn > 5) {
-      console.log("Too many guesses bro");
       window.removeEventListener("keyup", handleKeyUp);
     }
 

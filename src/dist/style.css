@@ -102,6 +102,15 @@ a:active {
   text-decoration: none;
 }
 
+.visually-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .grid {
   margin-bottom: 18px;
 }
@@ -210,7 +219,7 @@ a:active {
   padding: 15px 0;
   margin-bottom: 15px;
   display: grid;
-  grid-template-columns: 5fr 5fr repeat(5, 1fr);
+  grid-template-columns: repeat(15, 1fr);
   justify-content: center;
   align-items: center;
 }
@@ -226,7 +235,8 @@ a:active {
 }
 .header h1 {
   font-size: 50px;
-  grid-column-start: 2;
+  grid-column-start: 6;
+  grid-column-end: 11;
   text-align: center;
 }
 .header .icon-react {
@@ -241,7 +251,11 @@ a:active {
   color: var(--white-text);
 }
 .header .icon-stats {
-  grid-column-start: 6;
+  grid-column-start: 14;
+}
+.header .icon-help {
+  width: 1px;
+  margin-left: 0;
 }
 
 .keyboard__row {
@@ -364,6 +378,7 @@ a:active {
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   pointer-events: none;
@@ -380,7 +395,6 @@ a:active {
   justify-content: center;
   transform: translateY(-200px);
   opacity: 0;
-  z-index: -1;
 }
 .stats-modal__content .details {
   display: flex;
@@ -428,12 +442,16 @@ a:active {
 .stats-modal__content .icon-x svg {
   color: #73798d;
 }
-.stats-modal.visible {
+
+.t-stats-enter-active {
+  display: flex;
+}
+.t-stats-enter-done.stats-modal {
+  display: flex;
   opacity: 1;
   pointer-events: auto;
-  z-index: 1;
 }
-.stats-modal.visible .stats-modal__content {
+.t-stats-enter-done .stats-modal__content {
   opacity: 1;
   transform: translateY(0px);
   transition: all 0.3s ease-in-out;

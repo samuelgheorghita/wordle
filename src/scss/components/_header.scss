@@ -4,7 +4,7 @@
   margin-bottom: 15px;
 
   display: grid;
-  grid-template-columns: 5fr 5fr repeat(5, 1fr);
+  grid-template-columns: repeat(15, 1fr);
   justify-content: center;
   align-items: center;
 
@@ -21,7 +21,8 @@
 
   h1 {
     font-size: 50px;
-    grid-column-start: 2;
+    grid-column-start: 6;
+    grid-column-end: 11;
     text-align: center;
   }
 
@@ -32,18 +33,18 @@
     background-color: transparent;
     border: none;
     line-height: 0;
-    // padding: 0;
-    // display: flex;
-    // justify-content: end;
-    // align-items: center;
 
     svg {
       color: var(--white-text);
-      // background-color: red;
     }
   }
 
   .icon-stats {
-    grid-column-start: 6;
+    grid-column-start: 14;
+  }
+
+  .icon-help {
+    width: 1px;
+    margin-left: 0;
   }
 }

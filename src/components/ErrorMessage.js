@@ -3,12 +3,9 @@ import { AppContext } from "../contexts/AppContext";
 
 const ErrorMessage = () => {
   const { errorMessage } = useContext(AppContext);
-  console.log("errorMessage: " + errorMessage);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      console.log("This will run after 1 second!");
-    }, 1000);
+    const timer = setTimeout(() => {}, 1000);
     return () => clearTimeout(timer);
   }, [errorMessage]);
 

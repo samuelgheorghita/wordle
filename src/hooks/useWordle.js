@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 
 const useWordle = (solution = "plain", dictionary) => {
-  const [turn, setTurn] = useState(5);
+  const [turn, setTurn] = useState(0);
   const [currentGuess, setCurrentGuess] = useState("");
   const [guesses, setGuesses] = useState([...Array(6)]); // each guess is an array
   const [history, setHistory] = useState([]); // each guess is a string
@@ -31,7 +31,6 @@ const useWordle = (solution = "plain", dictionary) => {
       }
     });
 
-    console.log(formattedGuess);
     return formattedGuess;
   };
 
@@ -75,7 +74,6 @@ const useWordle = (solution = "plain", dictionary) => {
 
   // Handles keyup events, including backspace and enter
   const handleKeyUp = (e) => {
-    console.log(e?.target?.className?.includes("icon-react"));
     if (/^[a-zA-Z]$/.test(e.key)) {
       if (currentGuess.length < 5) {
         setCurrentGuess((prevState) => prevState + e.key);
@@ -98,24 +96,20 @@ const useWordle = (solution = "plain", dictionary) => {
   const checkWordValidity = () => {
     // Don't add if the player already guessed 6 times
     if (turn > 5) {
-      console.log("you used all your guesses");
       return;
     }
     // Do not allow duplicate words
     if (history.includes(currentGuess)) {
-      console.log("You already tried that word");
       notify("You already tried that word");
       return;
     }
     // Submit guess only if 5 letters long
     if (currentGuess.length !== 5) {
-      console.log("Word must be 5 letters long");
       notify("Word must be 5 letters long");
       return;
     }
     // If guess is not present in the dictionary
     if (!dictionary.includes(currentGuess)) {
-      console.log("word not present in the dictionary");
       setErrorMessage("not in word list");
       notify("not in word list");
       return;

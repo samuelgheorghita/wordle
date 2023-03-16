@@ -14,11 +14,12 @@ const Keyboard = ({ usedKeys }) => {
   };
 
   return (
-    <div className="keyboard">
+    <section className="keyboard">
+      <h2 className="visually-hidden">Keyboard</h2>
       <div className="keyboard__row">{rowUI(0)}</div>
       <div className="keyboard__row">{rowUI(1)}</div>
       <div className="keyboard__row">{rowUI(2)}</div>
-    </div>
+    </section>
   );
 };
 

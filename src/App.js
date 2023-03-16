@@ -14,8 +14,6 @@ function App() {
   const count = 1000;
   const randomNumber = Math.floor(Math.random() * count);
 
-  console.log(solution + " : " + randomNumber);
-
   useEffect(() => {
     const fetchData = async () => {
       // The 1000(count) most popular words with length 5
