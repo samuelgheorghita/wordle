@@ -6,7 +6,7 @@ import { AppContext } from "../contexts/AppContext";
 import Stats from "./Stats";
 
 const Header = ({ resetGame, stats, turn }) => {
-  const { solution, setSolution, popularWords } = useContext(AppContext);
+  const { setSolution, popularWords } = useContext(AppContext);
   const [isStatsOpen, setIsStatsOpen] = useState(false);
 
   const restartGame = (e) => {
