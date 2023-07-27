@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect } from "react";
 
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import useWordle from "../hooks/useWordle";
@@ -10,7 +10,6 @@ import Keyboard from "./Keyboard";
 import Modal from "./Modal";
 
 const Wordle = ({ solution, dictionary }) => {
-  console.log(solution);
   const { currentGuess, guesses, handleKeyUp, isCorrect, resetGame, turn, usedKeys, setIsCorrect, setTurn } = useWordle(solution, dictionary);
   const isGameEnded = isCorrect || turn === 6;
 
@@ -30,9 +29,7 @@ const Wordle = ({ solution, dictionary }) => {
   useEffect(() => {
     const stats = JSON.parse(window.localStorage.getItem("statistics"));
     if (stats) {
-      console.log("stats ok");
       if (isGameEnded) {
-        console.log("chaning stats now!!!!");
         stats.gamesPlayed++;
         if (isCorrect) {
           stats.gamesWon++;

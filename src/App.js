@@ -1,4 +1,4 @@
-import react, { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import "./dist/style.css";
 import { words } from "popular-english-words";
 
@@ -7,7 +7,7 @@ import { AppContext } from "./contexts/AppContext";
 
 function App() {
   const { solution, setSolution } = useContext(AppContext);
-  const { popularWords, setPopularWords } = useContext(AppContext);
+  const { setPopularWords } = useContext(AppContext);
 
   // All words with length 5
   const dictionary = words.getMostPopularLength(100000, 5);
